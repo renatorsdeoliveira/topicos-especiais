@@ -123,6 +123,6 @@
   },
   "defaultProject": "angular9-springboot-client",
   "cli": {
-    "analytics": false
+    "analytics": "d47efb58-1f41-4d48-a893-bc3db6987166"
   }
 }
