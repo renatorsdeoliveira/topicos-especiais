@@ -35,6 +35,7 @@ public class EmployeeController {
 	@Autowired
     private ModelMapper modelMapper;
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/employees")
 	public List<EmployeeDTO> getAllEmployees() {
 		List<Employee> employees = employeeService.getAllEmployees();
@@ -43,17 +44,20 @@ public class EmployeeController {
         .collect(Collectors.toList());
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/employees/{id}")
 	public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable(value = "id") Long employeeId) {
 		Employee employee = employeeService.getEmployeeById(employeeId).get();
 		return ResponseEntity.ok().body(convertToDto(employee));
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/employees")
 	public Employee createEmployee(@Valid @RequestBody EmployeeDTO employeeDTO) {
 		return employeeService.createEmployee(convertToEntity(employeeDTO));
 	}
-
+	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("/employees/{id}")
 	public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Long employeeId,
 			@Valid @RequestBody Employee employeeDetails) throws ResourceNotFoundException {
@@ -67,6 +71,7 @@ public class EmployeeController {
 		return ResponseEntity.ok(updatedEmployee);
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@DeleteMapping("/employees/{id}")
 	public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long employeeId)
 			throws ResourceNotFoundException {
