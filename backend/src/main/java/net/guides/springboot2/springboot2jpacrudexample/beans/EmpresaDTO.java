@@ -17,13 +17,13 @@ public class EmpresaDTO implements Serializable{
 	
 
 	
-	public EmpresaDTO(long id, String nomeEmpresa, int cnpjEmpresa, int qtdFuncionarios, String role) {
+	public EmpresaDTO(long id, String nomeEmpresa, int cnpjEmpresa, int qtdFuncionarios) {
 		super();
 		this.id = id;
 		this.nomeEmpresa = nomeEmpresa;
 		this.cnpjEmpresa = cnpjEmpresa;
 		this.qtdFuncionarios = qtdFuncionarios;
-		this.role = role;
+
 	}
 
 
@@ -59,9 +59,6 @@ public class EmpresaDTO implements Serializable{
 	public void setQtdFuncionarios(int qtdFuncionarios) {
 		this.qtdFuncionarios = qtdFuncionarios;
 	}
-
-
-
 	public String getRole() {
 		return role;
 	}
