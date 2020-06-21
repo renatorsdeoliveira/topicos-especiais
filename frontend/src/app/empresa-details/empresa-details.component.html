@@ -1,0 +1,20 @@
+<h2>Detalhes Empesa</h2> 
+
+<hr/>
+<div *ngIf="empresa">
+  <div>
+    <label><b>Nome Empresa: </b></label> {{empresa.nomeEmpresa}}
+  </div>
+  <div>
+    <label><b>CNPJ: </b></label> {{empresa.cnpjEmpresa}}
+  </div>
+  <div>
+    <label><b>Quantidade de funcionários: </b></label> {{empresa.qtdFuncionarios}}
+  </div>  
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Voltar à lista de empresas</button><br>
+
+

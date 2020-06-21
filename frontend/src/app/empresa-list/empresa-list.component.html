@@ -1,0 +1,30 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Lista Empesa</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nome Empresa</th>
+            <th>CNPJ</th>
+            <th>QDT de funcionários</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let empresa of empresas | async">
+            <td>{{empresa.nomeEmpresa}}</td>
+            <td>{{empresa.cnpjEmpresa}}</td>
+            <td>{{empresa.qtdFuncionarios}}</td>
+            <td><button (click)="deleteEmpresa(empresa.id)" class="btn btn-danger">Deletar</button>
+                <button (click)="updateEmpresa(empresa.id)" class="btn btn-info" style="margin-left: 10px">Atualizar</button>
+                <button (click)="empresaDetails(empresa.id)" class="btn btn-info" style="margin-left: 10px">Detalhes</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  

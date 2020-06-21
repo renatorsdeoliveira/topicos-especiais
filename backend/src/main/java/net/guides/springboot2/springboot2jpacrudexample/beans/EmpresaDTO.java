@@ -6,48 +6,61 @@ public class EmpresaDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private long id;
-	private String firstName;
-	private String lastName;
-	private String emailId;
+	private String nomeEmpresa;
+	private int cnpjEmpresa;
+	private int qtdFuncionarios;
 	private String role;
 	
 	public EmpresaDTO() {
 		
 	}
 	
-	public EmpresaDTO(String firstName, String lastName, String emailId) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.emailId = emailId;
-	}
+
 	
+	public EmpresaDTO(long id, String nomeEmpresa, int cnpjEmpresa, int qtdFuncionarios, String role) {
+		super();
+		this.id = id;
+		this.nomeEmpresa = nomeEmpresa;
+		this.cnpjEmpresa = cnpjEmpresa;
+		this.qtdFuncionarios = qtdFuncionarios;
+		this.role = role;
+	}
+
+
+
 	public long getId() {
 		return id;
 	}
+	
 	public void setId(long id) {
 		this.id = id;
 	}
 	
-	public String getFirstName() {
-		return firstName;
+	public String getNomeEmpresa() {
+		return nomeEmpresa;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+
+	public void setNomeEmpresa(String nomeEmpresa) {
+		this.nomeEmpresa = nomeEmpresa;
 	}
-	
-	public String getLastName() {
-		return lastName;
+
+	public int getCnpjEmpresa() {
+		return cnpjEmpresa;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+
+	public void setCnpjEmpresa(int cnpjEmpresa) {
+		this.cnpjEmpresa = cnpjEmpresa;
 	}
-	
-	public String getEmailId() {
-		return emailId;
+
+	public int getQtdFuncionarios() {
+		return qtdFuncionarios;
 	}
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+
+	public void setQtdFuncionarios(int qtdFuncionarios) {
+		this.qtdFuncionarios = qtdFuncionarios;
 	}
+
+
 
 	public String getRole() {
 		return role;

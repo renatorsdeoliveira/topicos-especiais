@@ -65,7 +65,7 @@ public class EmpresaController {
 		
 		empresa.setNomeEmpresa(empresaDetalhes.getNomeEmpresa());
 		empresa.setCnpjEmpresa(empresaDetalhes.getCnpjEmpresa());
-		empresa.setDataFundacao(empresaDetalhes.getDataFundacao());
+		empresa.setQtdFuncionarios(empresaDetalhes.getQtdFuncionarios());
 		empresa.setProprietario(empresaDetalhes.getProprietario());
 		empresa.setListEmpregados(empresaDetalhes.getListEmpregados());
 		final Empresa upEmpresa = empresaRepository.save(empresa);

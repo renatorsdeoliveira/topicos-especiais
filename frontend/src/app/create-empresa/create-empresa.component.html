@@ -1,0 +1,32 @@
+<h3>Criar Empresa</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nomeEmpresa">Nome mpresa</label>
+      <input type="text" class="form-control" id="nomeEmpresa" required [(ngModel)]="empresa.nomeEmpresa" name="nomeEmpresa">
+    </div>
+
+    <div class="form-group">
+      <label for="cnpjEmpresa">CNPJ da empresa</label>
+      <input type="number" class="form-control" id="cnpjEmpresa" required [(ngModel)]="empresa.cnpjEmpresa" name="cnpjEmpresa">
+    </div>
+
+    
+    <div class="form-group">
+      <label for="qtdFuncionarios">Quantidade de funcionários</label>
+      <input type="number" class="form-control" id="qtdFuncionarios" required [(ngModel)]="empresa.qtdFuncionarios" name="qtdFuncionarios">
+    </div>
+
+    <!-- <div class="form-group">
+      <label for="emailId">Email</label>
+      <input type="text" class="form-control" id="emailId" required [(ngModel)]="empresa.emailId" name="emailId">
+    </div> -->
+
+    <button type="submit" class="btn btn-success">Enviar</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>Você enviou com sucesso!</h4>
+  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>

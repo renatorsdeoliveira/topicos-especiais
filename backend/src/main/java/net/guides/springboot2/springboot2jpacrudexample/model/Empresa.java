@@ -21,8 +21,9 @@ public class Empresa {
 
 	private long id;
 	private String nomeEmpresa;
-	private String cnpjEmpresa;
-	private Date DataFundacao;
+	private int cnpjEmpresa;
+	private int qtdFuncionarios;
+//	private Date dataFundacao;
 	private Empregado proprietario;
 	private List<Empregado> listEmpregados;
 	
@@ -30,17 +31,20 @@ public class Empresa {
 		
 	}
 	
-	public Empresa(long id, String nomeEmpresa, String cnpjEmpresa, Date dataFundacao, Empregado proprietario,
+	
+	public Empresa(long id, String nomeEmpresa, int cnpjEmpresa, int qtdFuncionarios, Empregado proprietario,
 			List<Empregado> listEmpregados) {
 		super();
 		this.id = id;
 		this.nomeEmpresa = nomeEmpresa;
 		this.cnpjEmpresa = cnpjEmpresa;
-		this.DataFundacao = dataFundacao;
+		this.qtdFuncionarios = qtdFuncionarios;
 		this.proprietario = proprietario;
 		this.listEmpregados = listEmpregados;
 	}
-	
+
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
@@ -61,22 +65,23 @@ public class Empresa {
 	}
 	
 	@Column(name = "cnpj_empresa", nullable = false)
-	public String getCnpjEmpresa() {
+	public int getCnpjEmpresa() {
 		return cnpjEmpresa;
 	}
 
-	public void setCnpjEmpresa(String cnpjEmpresa) {
-		this.cnpjEmpresa = cnpjEmpresa;
+	public void setQtdFuncionarios(int qtdFuncionarios) {
+		this.qtdFuncionarios = qtdFuncionarios;
 	}
 	
-	@Column(name = "data_fundacao", nullable = false)
-	public Date getDataFundacao() {
-		return DataFundacao;
+	@Column(name = "qtd_funcionarios", nullable = false)
+	public int getQtdFuncionarios() {
+		return qtdFuncionarios;
 	}
 
-	public void setDataFundacao(Date dataFundacao) {
-		DataFundacao = dataFundacao;
+	public void setCnpjEmpresa(int cnpjEmpresa) {
+		this.cnpjEmpresa = cnpjEmpresa;
 	}
+
 	
 	@OneToOne
 	@JoinColumn(name = "empregado_id")
@@ -97,12 +102,14 @@ public class Empresa {
 		this.listEmpregados = listEmpregados;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Empresa [id=" + id + ", nomeEmpresa=" + nomeEmpresa + ", cnpjEmpresa=" + cnpjEmpresa + ", DataFundacao="
-				+ DataFundacao + ", proprietario=" + proprietario + ", listEmpregados=" + listEmpregados + "]";
+		return "Empresa [id=" + id + ", nomeEmpresa=" + nomeEmpresa + ", cnpjEmpresa=" + cnpjEmpresa
+				+ ", qtdFuncionarios=" + qtdFuncionarios + ", proprietario=" + proprietario + ", listEmpregados="
+				+ listEmpregados + "]";
 	}
-	
+
 
 	
 	
