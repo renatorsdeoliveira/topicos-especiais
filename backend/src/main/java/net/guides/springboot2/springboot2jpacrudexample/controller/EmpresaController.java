@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,79 +21,66 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import net.guides.springboot2.springboot2jpacrudexample.beans.EmpresaDTO;
 import net.guides.springboot2.springboot2jpacrudexample.exception.ResourceNotFoundException;
 import net.guides.springboot2.springboot2jpacrudexample.model.Empresa;
+import net.guides.springboot2.springboot2jpacrudexample.repository.EmpresaRepository;
 import net.guides.springboot2.springboot2jpacrudexample.service.EmpresaService;
+
+import javassist.expr.NewArray;
+
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("api/v1")
 public class EmpresaController {
 	
 	@Autowired
-	private EmpresaService empresaService;
-
-	@Autowired
-    private ModelMapper modelMapper;
+	EmpresaRepository empresaRepository;
 	
-	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/empresas")
-	public List<EmpresaDTO> getAllEmpresas() {
-		List<Empresa> empresas = empresaService.getAllEmpresas();
-		return empresas.stream()
-        .map(this::convertToDto)
-        .collect(Collectors.toList());
+	@GetMapping("empresas")
+	public List<Empresa> getAlEmpresas(){
+		return empresaRepository.findAll();
 	}
-
-	@CrossOrigin(origins = "http://localhost:4200")
+	
 	@GetMapping("/empresas/{id}")
-	public ResponseEntity<EmpresaDTO> getEmpresaById(@PathVariable(value = "id") Long empresaId) {
-		Empresa empresa = empresaService.getEmpresaById(empresaId).get();
-		return ResponseEntity.ok().body(convertToDto(empresa));
-	}
-
-	@CrossOrigin(origins = "http://localhost:4200")
-	@PostMapping("/empresas")
-	public Empresa createEmpresa(@Valid @RequestBody EmpresaDTO empresaDTO) {
-		return empresaService.createEmpresa(convertToEntity(empresaDTO));
+	public ResponseEntity<Empresa> getEmpresasById(@PathVariable(value = "id") Long empresaId)
+			throws ResourceNotFoundException{
+		Empresa empresa = empresaRepository.findById(empresaId)
+				.orElseThrow(() -> new ResourceNotFoundException("Nenhuma empresa localizada :: " + empresaId));
+		return ResponseEntity.ok().body(empresa);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
-	@PutMapping("/empresas/{id}")
-	public ResponseEntity<Empresa> updateEmpresa(@PathVariable(value = "id") Long empresaId,
-			@Valid @RequestBody Empresa empresaDetails) throws ResourceNotFoundException {
-		Empresa empresa = empresaService.getEmpresaById(empresaId)
-				.orElseThrow(() -> new ResourceNotFoundException("Empresa not found for this id :: " + empresaId));
-
-		empresa.setEmailId(empresaDetails.getEmailId());
-		empresa.setLastName(empresaDetails.getLastName());
-		empresa.setFirstName(empresaDetails.getFirstName());
-		final Empresa updatedEmpresa = empresaService.updateEmpresa(empresaDetails);
-		return ResponseEntity.ok(updatedEmpresa);
+	@PostMapping("/empresas")
+	public Empresa addEmpresas(@Validated @RequestBody Empresa empresa) {
+		return empresaRepository.save(empresa);
 	}
-
-	@CrossOrigin(origins = "http://localhost:4200")
-	@DeleteMapping("/empresas/{id}")
-	public Map<String, Boolean> deleteEmpresa(@PathVariable(value = "id") Long empresaId)
-			throws ResourceNotFoundException {
-		Empresa empresa = empresaService.getEmpresaById(empresaId)
-				.orElseThrow(() -> new ResourceNotFoundException("Empresa not found for this id :: " + empresaId));
-
-		empresaService.deleteEmpresa(empresa);
+	
+	@PutMapping("/empresa/{id}")
+	public ResponseEntity<Empresa> updateEmpresa(@PathVariable(value = "id") Long empresaId,
+			@Validated @RequestBody Empresa empresaDetalhes) throws ResourceNotFoundException{
+		Empresa empresa = empresaRepository.findById(empresaId)
+				.orElseThrow(() -> new ResourceNotFoundException("Não foi possível atualizar :: " +empresaId + ":: não localizado"));
 		
+		empresa.setNomeEmpresa(empresaDetalhes.getNomeEmpresa());
+		empresa.setCnpjEmpresa(empresaDetalhes.getCnpjEmpresa());
+		empresa.setDataFundacao(empresaDetalhes.getDataFundacao());
+		empresa.setProprietario(empresaDetalhes.getProprietario());
+		empresa.setListEmpregados(empresaDetalhes.getListEmpregados());
+		final Empresa upEmpresa = empresaRepository.save(empresa);
+		return ResponseEntity.ok(upEmpresa);
+	}
+	
+	@DeleteMapping("/empresa/{id}")
+	public Map<String, Boolean> deleteEmpresa(@PathVariable(value = "id") Long empresaId)
+		throws ResourceNotFoundException{
+		Empresa empresa = empresaRepository.findById(empresaId)
+				.orElseThrow(() -> new ResourceNotFoundException("Não existe empresa para esse id :: "+empresaId));
+		empresaRepository.delete(empresa);
 		Map<String, Boolean> response = new HashMap<>();
-		response.put("deleted", Boolean.TRUE);
+		response.put("Deletado", Boolean.TRUE);
 		return response;
 	}
-	
-	public EmpresaDTO convertToDto(Empresa empresa) {
-		EmpresaDTO empresaDTO = modelMapper.map(empresa, EmpresaDTO.class);
-		empresaDTO.setRole("ROLE_USER");
-		return empresaDTO;
-	}
-	
-	public Empresa convertToEntity(EmpresaDTO empresaDTO) {
-		Empresa empresa = modelMapper.map(empresaDTO, Empresa.class);
-		return empresa;
-	}
+
 }
