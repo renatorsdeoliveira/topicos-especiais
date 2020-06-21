@@ -2,7 +2,7 @@ package net.guides.springboot2.springboot2jpacrudexample.beans;
 
 import java.io.Serializable;
 
-public class EmployeeDTO implements Serializable{
+public class EmpresaDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private long id;
@@ -11,11 +11,11 @@ public class EmployeeDTO implements Serializable{
 	private String emailId;
 	private String role;
 	
-	public EmployeeDTO() {
+	public EmpresaDTO() {
 		
 	}
 	
-	public EmployeeDTO(String firstName, String lastName, String emailId) {
+	public EmpresaDTO(String firstName, String lastName, String emailId) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.emailId = emailId;

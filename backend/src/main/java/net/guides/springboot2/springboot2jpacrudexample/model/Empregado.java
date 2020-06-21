@@ -8,19 +8,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "employees")
-public class Employee {
+@Table(name = "empregado")
+public class Empregado {
 
 	private long id;
 	private String firstName;
 	private String lastName;
 	private String emailId;
 	
-	public Employee() {
+	public Empregado() {
 		
 	}
 	
-	public Employee(String firstName, String lastName, String emailId) {
+	public Empregado(String firstName, String lastName, String emailId) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.emailId = emailId;

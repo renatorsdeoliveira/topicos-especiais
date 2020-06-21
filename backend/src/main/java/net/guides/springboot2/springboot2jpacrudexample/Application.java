@@ -7,9 +7,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import net.guides.springboot2.springboot2jpacrudexample.model.Employee;
-import net.guides.springboot2.springboot2jpacrudexample.repository.EmployeeRepository;
-
+import net.guides.springboot2.springboot2jpacrudexample.model.Empregado;
+import net.guides.springboot2.springboot2jpacrudexample.model.Empresa;
+import net.guides.springboot2.springboot2jpacrudexample.repository.EmpregadoRepository;
+import net.guides.springboot2.springboot2jpacrudexample.repository.EmpresaRepository;
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
@@ -18,9 +19,14 @@ public class Application implements CommandLineRunner {
 	    return new ModelMapper();
 	}
 	
-    @Autowired
-    private EmployeeRepository employeeRepository;
+	
+	@Autowired
+    private EmpregadoRepository employeeRepository;
 
+    @Autowired
+    private EmpresaRepository empresaRepository;
+	
+  
     @Override
     public void run(String...args) throws Exception {
 

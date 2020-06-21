@@ -13,7 +13,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import net.guides.springboot2.springboot2jpacrudexample.model.Employee;
+import net.guides.springboot2.springboot2jpacrudexample.model.Empregado;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -32,12 +32,12 @@ public class EmployeeControllerIntegrationTest {
 
 	@Test
 	public void testCreateEmployee() {
-		Employee employee = new Employee();
+		Empregado employee = new Empregado();
 		employee.setEmailId("admin@gmail.com");
 		employee.setFirstName("admin");
 		employee.setLastName("admin");
 
-		ResponseEntity<Employee> postResponse = restTemplate.postForEntity(getRootUrl(), employee, Employee.class);
+		ResponseEntity<Empregado> postResponse = restTemplate.postForEntity(getRootUrl(), employee, Empregado.class);
 		System.out.println(" postResponse -> " + postResponse);
 		assertNotNull(postResponse);
 		assertNotNull(postResponse.getBody());
@@ -45,7 +45,7 @@ public class EmployeeControllerIntegrationTest {
 	
 	@Test
 	public void testGetEmployeeById() {
-		Employee employee = restTemplate.getForObject(getRootUrl() + "/1", Employee.class);
+		Empregado employee = restTemplate.getForObject(getRootUrl() + "/1", Empregado.class);
 		System.out.println(employee);
 		assertNotNull(employee);
 	}
