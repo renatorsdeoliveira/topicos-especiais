@@ -8,7 +8,8 @@
           <tr>
             <th>Nome Empresa</th>
             <th>CNPJ</th>
-            <th>QDT de funcionários</th>
+            <th>Data Fundação</th>
+            <th>Proprietário</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -16,7 +17,8 @@
           <tr *ngFor="let empresa of empresas | async">
             <td>{{empresa.nomeEmpresa}}</td>
             <td>{{empresa.cnpjEmpresa}}</td>
-            <td>{{empresa.qtdFuncionarios}}</td>
+            <td>{{empresa.dataFundacao}}</td>
+            <td>{{empresa.proprietario}}</td>
             <td><button (click)="deleteEmpresa(empresa.id)" class="btn btn-danger">Deletar</button>
                 <button (click)="updateEmpresa(empresa.id)" class="btn btn-info" style="margin-left: 10px">Atualizar</button>
                 <button (click)="empresaDetails(empresa.id)" class="btn btn-info" style="margin-left: 10px">Detalhes</button>

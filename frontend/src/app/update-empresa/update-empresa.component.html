@@ -1,21 +1,45 @@
 <h3>Atualizar empresa</h3>
-<div style="width: 400px;">
+<div>
   <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="nomeEmpresa">Nome Empresa</label>
-      <input type="text" class="form-control" id="nomeEmpresa" required [(ngModel)]="empresa.nomeEmpresa" name="nomeEmpresa">
-    </div>
+    <div class="row">
 
-    <div class="form-group">
-      <label for="cnpjEmpresa">CNPJ</label>
-      <input type="number" class="form-control" id="cnpjEmpresa" required [(ngModel)]="empresa.cnpjEmpresa" name="cnpjEmpresa">
-    </div>
+      <div class="form-group col-5">
+        <label for="nomeEmpresa">Nome mpresa</label>
+        <input type="text" class="form-control" id="nomeEmpresa" required [(ngModel)]="empresa.nomeEmpresa"
+          name="nomeEmpresa">
+      </div>
 
-    <div class="form-group">
-      <label for="qtdFuncionarios">Quantidade de funcionários</label>
-      <input type="number" class="form-control" id="qtdFuncionarios" required [(ngModel)]="empresa.qtdFuncionarios" name="qtdFuncionarios">
-    </div>
+      <div class="form-group col-3">
+        <label for="cnpjEmpresa">CNPJ da empresa</label>
+        <input type="text" class="form-control" id="cnpjEmpresa" required [(ngModel)]="empresa.cnpjEmpresa"
+          name="cnpjEmpresa">
+      </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
+
+      <div class="form-group col-2">
+        <label for="telefone">Telefone</label>
+        <input type="text" class="form-control" id="telefone" required [(ngModel)]="empresa.telefone"
+          name="telefone">
+      </div>
+
+      <div class="form-group col-6">
+        <label for="endereco">Endereço</label>
+        <input type="text" class="form-control" id="endereco" required [(ngModel)]="empresa.endereco"
+          name="endereco">
+      </div>
+
+      <div class="form-group col-2">
+        <label for="dataFundacao">Data Fundação</label>
+        <input type="text" class="form-control" id="dataFundacao" required [(ngModel)]="empresa.dataFundacao"
+          name="dataFundacao">
+      </div>
+      
+      <div class="col-12">
+
+      <button type="submit" class="btn btn-success">Enviar</button>
+
+      </div>
+
+    </div>
   </form>
 </div>
