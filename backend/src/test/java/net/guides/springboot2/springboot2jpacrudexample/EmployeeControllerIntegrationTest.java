@@ -33,9 +33,7 @@ public class EmployeeControllerIntegrationTest {
 	@Test
 	public void testCreateEmployee() {
 		Empregado employee = new Empregado();
-		employee.setEmailId("admin@gmail.com");
-		employee.setFirstName("admin");
-		employee.setLastName("admin");
+		
 
 		ResponseEntity<Empregado> postResponse = restTemplate.postForEntity(getRootUrl(), employee, Empregado.class);
 		System.out.println(" postResponse -> " + postResponse);

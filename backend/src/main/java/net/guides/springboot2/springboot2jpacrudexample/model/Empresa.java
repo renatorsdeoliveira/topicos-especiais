@@ -23,7 +23,7 @@ public class Empresa {
 	private String nomeEmpresa;
 	private int cnpjEmpresa;
 	private int qtdFuncionarios;
-//	private Date dataFundacao;
+	private Date dataFundacao;
 	private Empregado proprietario;
 	private List<Empregado> listEmpregados;
 	
@@ -92,6 +92,7 @@ public class Empresa {
 	public void setProprietario(Empregado proprietario) {
 		this.proprietario = proprietario;
 	}
+	
 	@OneToMany
 	@JoinColumn(name = "empresa_id")
 	public List<Empregado> getListEmpregados() {
@@ -102,15 +103,20 @@ public class Empresa {
 		this.listEmpregados = listEmpregados;
 	}
 
+	@Column(name = "date_fundacao")
+	public Date getDataFundacao() {
+		return dataFundacao;
+	}
+
+	public void setDataFundacao(Date dataFundacao) {
+		this.dataFundacao = dataFundacao;
+	}
 
 	@Override
 	public String toString() {
 		return "Empresa [id=" + id + ", nomeEmpresa=" + nomeEmpresa + ", cnpjEmpresa=" + cnpjEmpresa
-				+ ", qtdFuncionarios=" + qtdFuncionarios + ", proprietario=" + proprietario + ", listEmpregados="
-				+ listEmpregados + "]";
+				+ ", qtdFuncionarios=" + qtdFuncionarios + ", dataFundacao=" + dataFundacao + ", proprietario="
+				+ proprietario + ", listEmpregados=" + listEmpregados + "]";
 	}
 
-
-	
-	
 }

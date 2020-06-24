@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import net.guides.springboot2.springboot2jpacrudexample.Enums.Funcao;
 import net.guides.springboot2.springboot2jpacrudexample.beans.EmpregadoDTO;
 import net.guides.springboot2.springboot2jpacrudexample.exception.ResourceNotFoundException;
 import net.guides.springboot2.springboot2jpacrudexample.model.Empregado;
@@ -64,9 +65,14 @@ public class EmpregadoController {
 		Empregado empregado = empregadoService.getEmpregadoById(empregadoId)
 				.orElseThrow(() -> new ResourceNotFoundException("Empregado not found for this id :: " + empregadoId));
 
+		empregado.setNome(empregadoDetails.getNome());
+		empregado.setEndereco(empregadoDetails.getEndereco());
 		empregado.setEmailId(empregadoDetails.getEmailId());
-		empregado.setLastName(empregadoDetails.getLastName());
-		empregado.setFirstName(empregadoDetails.getFirstName());
+		empregado.setTelefone(empregadoDetails.getTelefone());
+		empregado.setCPF(empregadoDetails.getCPF());
+		empregado.setDataNascimento(empregadoDetails.getDataNascimento());
+		empregado.setFuncao(empregadoDetails.getFuncao());
+		empregado.setSalario(empregadoDetails.getSalario());
 		final Empregado updatedEmpregado = empregadoService.updateEmpregado(empregadoDetails);
 		return ResponseEntity.ok(updatedEmpregado);
 	}
@@ -87,7 +93,7 @@ public class EmpregadoController {
 	
 	public EmpregadoDTO convertToDto(Empregado empregado) {
 		EmpregadoDTO empregadoDTO = modelMapper.map(empregado, EmpregadoDTO.class);
-		empregadoDTO.setRole("ROLE_USER");
+		empregadoDTO.setRole("Supervisão");
 		return empregadoDTO;
 	}
 	

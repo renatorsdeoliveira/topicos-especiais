@@ -19,13 +19,6 @@ public class Application implements CommandLineRunner {
 	    return new ModelMapper();
 	}
 	
-	
-	@Autowired
-    private EmpregadoRepository employeeRepository;
-
-    @Autowired
-    private EmpresaRepository empresaRepository;
-	
   
     @Override
     public void run(String...args) throws Exception {
