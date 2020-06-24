@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import net.guides.springboot2.springboot2jpacrudexample.beans.EmpresaDTO;
 import net.guides.springboot2.springboot2jpacrudexample.model.Empregado;
 import net.guides.springboot2.springboot2jpacrudexample.repository.EmpregadoRepository;
 
@@ -39,5 +40,7 @@ public class EmpregadoServiceImpl implements EmpregadoService{
 	public void deleteEmpregado(Empregado empregado) {
 		this.empregadoRepository.delete(empregado);
 	}
+	
+
 
 }
