@@ -78,7 +78,7 @@ public class EmpresaController {
 		empresa.setEndereco(empresaDetalhes.getEndereco());
 		empresa.setDataFundacao(empresaDetalhes.getDataFundacao());
 		empresa.setProprietario(empresaDetalhes.getProprietario());
-		empresa.setListEmpregados(empresaDetalhes.getListEmpregados());
+		//empresa.setListEmpregados(empresaDetalhes.getListEmpregados());
 		final Empresa upEmpresa = empresaRepository.save(empresa);
 		return ResponseEntity.ok(upEmpresa);
 	}
