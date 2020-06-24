@@ -1,21 +1,66 @@
 <h3>Atualizar empregado</h3>
-<div style="width: 400px;">
+<div>
   <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="firstName">Nome</label>
-      <input type="text" class="form-control" id="firstName" required [(ngModel)]="employee.firstName" name="firstName">
-    </div>
+    <div class="row">
+      <div class="form-group col-5">
+        <label for="firstName">Nome</label>
+        <input type="text" class="form-control form-control-sm" id="firstName" required [(ngModel)]="employee.nome" name="Nome_Completo">
+      </div>
+  
+      <div class="form-group col-4">
+        <label for="Endereco">Endereço</label>
+        <input type="text" class="form-control form-control-sm" id="Endereco" required [(ngModel)]="employee.endereco" name="Endereco">
+      </div>
+  
+      <div class="form-group col-3">
+        <label for="emailId">Email</label>
+        <input type="text" class="form-control form-control-sm" id="emailId" required [(ngModel)]="employee.emailId" name="emailId">
+      </div>
 
-    <div class="form-group">
-      <label for="lastName">Sobrenome</label>
-      <input type="text" class="form-control" id="lastName" required [(ngModel)]="employee.lastName" name="lastName">
-    </div>
+      <div class="form-group col-2">
+        <label for="telefone">Telefone:</label>
+        <input type="text" class="form-control form-control-sm" id="telefone" required [(ngModel)]="employee.telefone" name="telefone">
+      </div>
 
-    <div class="form-group">
-      <label for="emailId">Email</label>
-      <input type="text" class="form-control" id="emailId" required [(ngModel)]="employee.emailId" name="emailId">
-    </div>
+      <div class="form-group col-2">
+        <label for="cpf">CPF:</label>
+        <input type="text" class="form-control form-control-sm" id="cpf" required [(ngModel)]="employee.cpf" name="cpf">
+      </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
+      <div class="form-group col-3">
+        <label for="telefone">Telefone:</label>
+        <input type="text" class="form-control form-control-sm" id="telefone" required [(ngModel)]="employee.telefone" name="telefone">
+      </div>
+
+      <div class="form-group col-2">
+        <label for="dataNascimento">Data Nascimento:</label>
+        <input type="text" class="form-control form-control-sm" id="dataNascimento" required [(ngModel)]="employee.dataNascimento" name="dataNascimento">
+      </div>
+
+      <div class="form-group col-2">
+        <label for="funcao">Funcao</label>
+        <select class="form-control form-control-sm" id="funcao" required [(ngModel)]="employee.funcao" name="funcao">
+          <option selected>{{employee.funcao}}</option>
+          <option value="0">Administrativo</option>
+          <option value="1">Supervisão</option>
+          <option value="2">Gerência</option>
+          <option value="3">Proprietário</option>
+        </select>
+      </div>
+
+      <div class="form-group col-2">
+        <label for="salario">Salário:</label>
+        <input type="text" ng-ngModel="money" class="form-control form-control-sm" id="salario" required [(ngModel)]="employee.salario" name="salario" maxlength="6">
+      </div>
+      
+      <div class="col-12">
+
+      <button type="submit" class="btn btn-primary">Atualizar</button>
+
+      </div>
+
+  
+    </div>
+   
   </form>
 </div>

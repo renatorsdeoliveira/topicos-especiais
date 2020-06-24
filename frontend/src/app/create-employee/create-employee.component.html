@@ -1,24 +1,61 @@
 <h3>Criar Empregado</h3>
-<div [hidden]="submitted" style="width: 400px;">
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="firstName">Nome</label>
-      <input type="text" class="form-control" id="firstName" required [(ngModel)]="employee.firstName" name="firstName">
-    </div>
+<div [hidden]="submitted" style="width: 800px;">
+    <form (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="nome_completo">Nome</label>
+          <input type="text" class="form-control form-control-sm" id="nome_completo" required [(ngModel)]="employee.nome" name="nome_completo">
+        </div>
+  
+        <div class="form-group col-6">
+          <label for="Endereço">Endereço</label>
+          <input type="text" class="form-control form-control-sm" id="Endereco" required [(ngModel)]="employee.endereco" name="Endereco">
+        </div>
+  
+        <div class="form-group col-4">
+          <label for="email">email</label>
+          <input type="text" class="form-control form-control-sm" id="email" required [(ngModel)]="employee.emailId" name="emailId">
+        </div>
+  
+        <div class="form-group col-4">
+          <label for="telefone">Telefone</label>
+          <input type="text" class="form-control form-control-sm" id="telefone" required [(ngModel)]="employee.telefone" name="telefone">
+        </div>
+  
+        <div class="form-group col-4">
+          <label for="cpf">CPF</label>
+          <input type="text" class="form-control form-control-sm" id="cpf" required [(ngModel)]="employee.cpf" name="cpf">
+        </div>
+  
+        <div class="form-group col-3">
+          <label for="data_nascimento">Data Nascimento</label>
+          <input type="date" class="form-control form-control-sm" id="data_nascimento" required [(ngModel)]="employee.dataNascimento" name="data_nascimento">
+        </div>
+  
+        <div class="form-group col-4">
+          <label for="funcao">Funcao</label>
+          <select class="form-control form-control-sm" id="funcao" required [(ngModel)]="employee.funcao" name="funcao">
+            <option selected>Selecione</option>
+            <option value="0">Administrativo</option>
+            <option value="1">Supervisão</option>
+            <option value="2">Gerência</option>
+            <option value="3">Proprietário</option>
+          </select>
+        </div>
+  
+        <div class="form-group col-3">
+          <label for="salario">Salario</label>
+          <input type="text" class="form-control form-control-sm" id="salario" required [(ngModel)]="employee.salario" name="salario">
+        </div>
+  
+        <div class="form-group col-12">
+          <button type="submit" class="btn btn-success">Enviar</button>
+        </div>
 
-    <div class="form-group">
-      <label for="lastName">Sobrenome</label>
-      <input type="text" class="form-control" id="lastName" required [(ngModel)]="employee.lastName" name="lastName">
     </div>
+    </form>
+  </div>
 
-    <div class="form-group">
-      <label for="emailId">Email</label>
-      <input type="text" class="form-control" id="emailId" required [(ngModel)]="employee.emailId" name="emailId">
-    </div>
-
-    <button type="submit" class="btn btn-success">Enviar</button>
-  </form>
-</div>
 
 <div [hidden]="!submitted">
   <h4>Você enviou com sucesso!</h4>

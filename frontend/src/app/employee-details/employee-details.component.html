@@ -2,18 +2,40 @@
 
 <hr/>
 <div *ngIf="employee">
+
   <div>
-    <label><b>Nome: </b></label> {{employee.firstName}}
+    <label><b>Nome:</b></label> {{employee.nome}}
   </div>
+
   <div>
-    <label><b>Sobrenome: </b></label> {{employee.lastName}}
+    <label><b>Endereço: </b></label> {{employee.endereco}}
   </div>
+
   <div>
     <label><b>Email: </b></label> {{employee.emailId}}
-  </div>  
-</div>
+  </div>
 
-<br>
+  <div>
+    <label><b>Telefone: </b></label> {{employee.telefone}}
+  </div>
+
+  <div>
+    <label><b>CPF: </b></label> {{employee.cpf}}
+  </div>
+
+  <div>
+    <label><b>Data Nascimento: </b></label> {{employee.dataNascimento}}
+  </div>
+
+  <div>
+    <label><b>Função: </b></label> {{employee.funcao}}
+  </div>
+  
+  <div>
+    <label><b>Salário: </b></label> {{employee.salario}}
+  </div>
+  
+</div>
 <br>
 <button (click)="list()" class="btn btn-primary">Voltar à lista de empregados</button><br>
 

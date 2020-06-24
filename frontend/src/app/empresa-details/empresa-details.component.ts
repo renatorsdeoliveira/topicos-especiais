@@ -30,6 +30,6 @@ export class EmpresaDetailsComponent implements OnInit {
   }
 
   list(){
-    this.router.navigate(['empresas']);
+    this.router.navigate(['/empresas']);
   }
 }

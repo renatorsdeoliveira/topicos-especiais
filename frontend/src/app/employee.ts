@@ -1,7 +1,12 @@
 export class Employee {
   id: number;
-  firstName: string;
-  lastName: string;
+  nome: string;
+  endereco: string;
   emailId: string;
+  telefone: string;
+  cpf: string;
+  dataNascimento: Date;
+  funcao: string;
+  salario: DoubleRange;
   active: boolean;
 }
