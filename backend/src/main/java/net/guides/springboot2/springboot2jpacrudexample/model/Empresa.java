@@ -21,8 +21,9 @@ public class Empresa {
 
 	private long id;
 	private String nomeEmpresa;
-	private int cnpjEmpresa;
-	private int qtdFuncionarios;
+	private String cnpjEmpresa;
+	private String telefone;
+	private String endereco;
 	private Date dataFundacao;
 	private Empregado proprietario;
 	private List<Empregado> listEmpregados;
@@ -32,13 +33,14 @@ public class Empresa {
 	}
 	
 	
-	public Empresa(long id, String nomeEmpresa, int cnpjEmpresa, int qtdFuncionarios, Empregado proprietario,
-			List<Empregado> listEmpregados) {
+	public Empresa(long id, String nomeEmpresa, String cnpjEmpresa, String telefone, String endereco,
+		 Date dataFundacao, Empregado proprietario, List<Empregado> listEmpregados) {
 		super();
 		this.id = id;
 		this.nomeEmpresa = nomeEmpresa;
 		this.cnpjEmpresa = cnpjEmpresa;
-		this.qtdFuncionarios = qtdFuncionarios;
+		this.telefone = telefone;
+		this.endereco = endereco;
 		this.proprietario = proprietario;
 		this.listEmpregados = listEmpregados;
 	}
@@ -65,20 +67,32 @@ public class Empresa {
 	}
 	
 	@Column(name = "cnpj_empresa", nullable = false)
-	public int getCnpjEmpresa() {
+	public String getCnpjEmpresa() {
 		return cnpjEmpresa;
 	}
-
-	public void setQtdFuncionarios(int qtdFuncionarios) {
-		this.qtdFuncionarios = qtdFuncionarios;
-	}
 	
-	@Column(name = "qtd_funcionarios", nullable = false)
-	public int getQtdFuncionarios() {
-		return qtdFuncionarios;
+	@Column(name="telefone", nullable = false)
+	public String getTelefone() {
+		return telefone;
 	}
 
-	public void setCnpjEmpresa(int cnpjEmpresa) {
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	@Column(name = "endereco", nullable = false)
+	public String getEndereco() {
+		return endereco;
+	}
+
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+
+	public void setCnpjEmpresa(String cnpjEmpresa) {
 		this.cnpjEmpresa = cnpjEmpresa;
 	}
 
@@ -111,12 +125,13 @@ public class Empresa {
 	public void setDataFundacao(Date dataFundacao) {
 		this.dataFundacao = dataFundacao;
 	}
-
+	
+	
 	@Override
 	public String toString() {
-		return "Empresa [id=" + id + ", nomeEmpresa=" + nomeEmpresa + ", cnpjEmpresa=" + cnpjEmpresa
-				+ ", qtdFuncionarios=" + qtdFuncionarios + ", dataFundacao=" + dataFundacao + ", proprietario="
-				+ proprietario + ", listEmpregados=" + listEmpregados + "]";
+		return "Empresa [id=" + id + ", nomeEmpresa=" + nomeEmpresa + ", cnpjEmpresa=" + cnpjEmpresa + ", telefone="
+				+ telefone + ", endereco=" + endereco + ", dataFundacao=" + dataFundacao + ", proprietario="
+				+ proprietario + "]";
 	}
 
 }

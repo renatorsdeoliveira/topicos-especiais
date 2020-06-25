@@ -1,5 +1,6 @@
 package net.guides.springboot2.springboot2jpacrudexample.controller;
 
+import java.io.Console;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,6 +49,7 @@ public class EmpresaController {
 		return empresaRepository.findAll();
 	}
 	
+	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/empresas/{id}")
 	public ResponseEntity<Empresa> getEmpresasById(@PathVariable(value = "id") Long empresaId)
@@ -58,7 +60,7 @@ public class EmpresaController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@PostMapping("/empresas")
+	@PostMapping("/empresas/{id}")
 	public Empresa addEmpresas(@Validated @RequestBody Empresa empresa) {
 		return empresaRepository.save(empresa);
 	}
@@ -72,9 +74,11 @@ public class EmpresaController {
 		
 		empresa.setNomeEmpresa(empresaDetalhes.getNomeEmpresa());
 		empresa.setCnpjEmpresa(empresaDetalhes.getCnpjEmpresa());
-		empresa.setQtdFuncionarios(empresaDetalhes.getQtdFuncionarios());
+		empresa.setTelefone(empresaDetalhes.getTelefone());
+		empresa.setEndereco(empresaDetalhes.getEndereco());
+		empresa.setDataFundacao(empresaDetalhes.getDataFundacao());
 		empresa.setProprietario(empresaDetalhes.getProprietario());
-		empresa.setListEmpregados(empresaDetalhes.getListEmpregados());
+		//empresa.setListEmpregados(empresaDetalhes.getListEmpregados());
 		final Empresa upEmpresa = empresaRepository.save(empresa);
 		return ResponseEntity.ok(upEmpresa);
 	}
@@ -90,6 +94,5 @@ public class EmpresaController {
 		response.put("Deletado", Boolean.TRUE);
 		return response;
 	}
-
 
 }
