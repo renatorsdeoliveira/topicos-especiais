@@ -22,15 +22,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import net.guides.springboot2.springboot2jpacrudexample.beans.EmpregadoDTO;
-import net.guides.springboot2.springboot2jpacrudexample.beans.EmpresaDTO;
 import net.guides.springboot2.springboot2jpacrudexample.exception.ResourceNotFoundException;
 import net.guides.springboot2.springboot2jpacrudexample.model.Empregado;
 import net.guides.springboot2.springboot2jpacrudexample.model.Empresa;
+import net.guides.springboot2.springboot2jpacrudexample.repository.EmpresaCustomRepository;
 import net.guides.springboot2.springboot2jpacrudexample.repository.EmpresaRepository;
-import net.guides.springboot2.springboot2jpacrudexample.service.EmpresaService;
 
-import javassist.expr.NewArray;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -40,6 +37,7 @@ public class EmpresaController {
 	
 	@Autowired
 	EmpresaRepository empresaRepository;
+	EmpresaCustomRepository empCustom;
 	
 
 	
@@ -48,8 +46,7 @@ public class EmpresaController {
 	public List<Empresa> getAlEmpresas(){
 		return empresaRepository.findAll();
 	}
-	
-	
+
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/empresas/{id}")
 	public ResponseEntity<Empresa> getEmpresasById(@PathVariable(value = "id") Long empresaId)
@@ -78,7 +75,7 @@ public class EmpresaController {
 		empresa.setEndereco(empresaDetalhes.getEndereco());
 		empresa.setDataFundacao(empresaDetalhes.getDataFundacao());
 		empresa.setProprietario(empresaDetalhes.getProprietario());
-		//empresa.setListEmpregados(empresaDetalhes.getListEmpregados());
+		empresa.setListEmpregados(empresaDetalhes.getListEmpregados());
 		final Empresa upEmpresa = empresaRepository.save(empresa);
 		return ResponseEntity.ok(upEmpresa);
 	}

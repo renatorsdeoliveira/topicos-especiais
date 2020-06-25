@@ -24,6 +24,7 @@ import net.guides.springboot2.springboot2jpacrudexample.Enums.Funcao;
 import net.guides.springboot2.springboot2jpacrudexample.beans.EmpregadoDTO;
 import net.guides.springboot2.springboot2jpacrudexample.exception.ResourceNotFoundException;
 import net.guides.springboot2.springboot2jpacrudexample.model.Empregado;
+import net.guides.springboot2.springboot2jpacrudexample.repository.EmpregadoRepository;
 import net.guides.springboot2.springboot2jpacrudexample.service.EmpregadoService;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -44,6 +45,16 @@ public class EmpregadoController {
         .map(this::convertToDto)
         .collect(Collectors.toList());
 	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/empregados/proprietarios")
+	public List<EmpregadoDTO> findAllProprietatios(){
+		List<Empregado> empregados = empregadoService.getAllProprietatios();
+		return empregados.stream()
+        .map(this::convertToDto)
+        .collect(Collectors.toList());
+	}
+	
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/empregados/{id}")

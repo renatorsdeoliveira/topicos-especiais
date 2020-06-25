@@ -41,6 +41,11 @@ public class EmpregadoServiceImpl implements EmpregadoService{
 		this.empregadoRepository.delete(empregado);
 	}
 	
+	@Override
+	public List<Empregado> getAllProprietatios(){
+		return this.empregadoRepository.findAllProprietario();
+	}
+	
 
 
 }

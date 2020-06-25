@@ -16,4 +16,6 @@ public interface EmpregadoService {
 	Empregado updateEmpregado(Empregado empregadoDetails);
 
 	void deleteEmpregado(Empregado empregado);
+	
+	List<Empregado>getAllProprietatios();
 }
