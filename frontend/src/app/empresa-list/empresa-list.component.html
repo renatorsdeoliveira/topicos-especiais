@@ -18,7 +18,7 @@
             <td>{{empresa.nomeEmpresa}}</td>
             <td>{{empresa.cnpjEmpresa}}</td>
             <td>{{empresa.dataFundacao}}</td>
-            <td>{{empresa.proprietario}}</td>
+            <td>{{empresa.proprietario.toString()}}</td>
             <td><button (click)="deleteEmpresa(empresa.id)" class="btn btn-danger">Deletar</button>
                 <button (click)="updateEmpresa(empresa.id)" class="btn btn-info" style="margin-left: 10px">Atualizar</button>
                 <button (click)="empresaDetails(empresa.id)" class="btn btn-info" style="margin-left: 10px">Detalhes</button>

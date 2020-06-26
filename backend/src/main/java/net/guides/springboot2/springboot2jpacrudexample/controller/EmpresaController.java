@@ -22,22 +22,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import net.guides.springboot2.springboot2jpacrudexample.beans.EmpregadoDTO;
+import net.guides.springboot2.springboot2jpacrudexample.beans.EmpresaDTO;
 import net.guides.springboot2.springboot2jpacrudexample.exception.ResourceNotFoundException;
 import net.guides.springboot2.springboot2jpacrudexample.model.Empregado;
 import net.guides.springboot2.springboot2jpacrudexample.model.Empresa;
 import net.guides.springboot2.springboot2jpacrudexample.repository.EmpresaCustomRepository;
 import net.guides.springboot2.springboot2jpacrudexample.repository.EmpresaRepository;
+import net.guides.springboot2.springboot2jpacrudexample.service.EmpresaService;
 
 
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("api/v1")
+@RequestMapping("/api/v1")
 public class EmpresaController {
+	
+	@Autowired
+    private ModelMapper modelMapper;
 	
 	@Autowired
 	EmpresaRepository empresaRepository;
 	EmpresaCustomRepository empCustom;
+	EmpresaService empresaService;
 	
 
 	
@@ -64,13 +71,20 @@ public class EmpresaController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@PostMapping("/empresas/{id}")
-	public Empresa addEmpresas(@Validated @RequestBody Empresa empresa) {
+	@PostMapping("/empresas")
+	public Empresa addEmpresa(@Validated @RequestBody Empresa empresa) {
 		return empresaRepository.save(empresa);
 	}
 	
+	
+	/*@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping("/empresas/{id}")
+	public Empresa addEmpresas(@Validated @RequestBody Empresa empresa) {
+		return empresaRepository.save(empresa);
+	}*/
+	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@PutMapping("/empresa/{id}")
+	@PutMapping("/empresas/{id}")
 	public ResponseEntity<Empresa> updateEmpresa(@PathVariable(value = "id") Long empresaId,
 			@Validated @RequestBody Empresa empresaDetalhes) throws ResourceNotFoundException{
 		Empresa empresa = empresaRepository.findById(empresaId)
@@ -88,7 +102,7 @@ public class EmpresaController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@DeleteMapping("/empresas/{id}")
+	@DeleteMapping("/empresa/{id}")
 	public Map<String, Boolean> deleteEmpresa(@PathVariable(value = "id") Long empresaId)
 		throws ResourceNotFoundException{
 		Empresa empresa = empresaRepository.findById(empresaId)
@@ -97,6 +111,12 @@ public class EmpresaController {
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("Deletado", Boolean.TRUE);
 		return response;
+	}
+	
+
+	public Empresa convertToEntity(EmpresaDTO empresaDTO) {
+		Empresa empresa = modelMapper.map(empresaDTO, Empresa.class);
+		return empresa;
 	}
 
 }

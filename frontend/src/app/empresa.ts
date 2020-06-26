@@ -6,7 +6,7 @@ export class Empresa {
   telefone: string;
   endereco: string;
   dataFundacao: Date;
-  proprietario:Object;
+  proprietario:String;
   active: boolean;
 
 }
