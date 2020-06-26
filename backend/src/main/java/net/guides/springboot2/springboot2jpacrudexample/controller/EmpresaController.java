@@ -47,6 +47,13 @@ public class EmpresaController {
 		return empresaRepository.findAll();
 	}
 
+    	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/empresas/inner")
+	public List<Empresa> findAllEmpresas(){
+		return empresaRepository.findAllInnerJoin();
+		
+	}
+
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/empresas/{id}")
 	public ResponseEntity<Empresa> getEmpresasById(@PathVariable(value = "id") Long empresaId)

@@ -17,5 +17,7 @@ public interface EmpresaService {
 	Empresa updateEmpresa(Empresa empresaDetails);
 
 	void deleteEmpresa(Empresa empresa);
+    
+    List<Empresa> getAllInnerJoin();
 
 }

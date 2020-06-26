@@ -51,5 +51,10 @@ public class EmpresaServiceImpl implements EmpresaService{
 	public void deleteEmpresa(Empresa empresa) {
 		this.empresaRepository.delete(empresa);
 	}
+
+    	@Override
+	public List<Empresa> getAllInnerJoin() {
+		return this.empresaRepository.findAllInnerJoin();
+	}
 	
 }
