@@ -1,0 +1,42 @@
+<h2>Detalhes Empregado</h2> 
+
+<hr/>
+<div *ngIf="empregado">
+
+  <div>
+    <label><b>Nome:</b></label> {{empregado.nome}}
+  </div>
+
+  <div>
+    <label><b>Endereço: </b></label> {{empregado.endereco}}
+  </div>
+
+  <div>
+    <label><b>Email: </b></label> {{empregado.emailId}}
+  </div>
+
+  <div>
+    <label><b>Telefone: </b></label> {{empregado.telefone}}
+  </div>
+
+  <div>
+    <label><b>CPF: </b></label> {{empregado.cpf}}
+  </div>
+
+  <div>
+    <label><b>Data Nascimento: </b></label> {{empregado.dataNascimento}}
+  </div>
+
+  <div>
+    <label><b>Função: </b></label> {{empregado.funcao}}
+  </div>
+  
+  <div>
+    <label><b>Salário: </b></label> {{empregado.salario}}
+  </div>
+  
+</div>
+<br>
+<button (click)="list()" class="btn btn-primary">Voltar à lista de empregados</button><br>
+
+
