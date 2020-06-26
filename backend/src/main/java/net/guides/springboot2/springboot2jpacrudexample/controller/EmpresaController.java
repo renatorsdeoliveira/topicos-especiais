@@ -102,7 +102,7 @@ public class EmpresaController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@DeleteMapping("/empresa/{id}")
+	@DeleteMapping("/empresas/{id}")
 	public Map<String, Boolean> deleteEmpresa(@PathVariable(value = "id") Long empresaId)
 		throws ResourceNotFoundException{
 		Empresa empresa = empresaRepository.findById(empresaId)

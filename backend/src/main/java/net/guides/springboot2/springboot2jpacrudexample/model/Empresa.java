@@ -3,6 +3,7 @@ package net.guides.springboot2.springboot2jpacrudexample.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -97,8 +98,8 @@ public class Empresa {
 	}
 
 	
-	@OneToOne
-	@JoinColumn(name = "empregado_id")
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "empregado_id", referencedColumnName = "id")
 	public Empregado getProprietario() {
 		return proprietario;
 	}
@@ -131,7 +132,7 @@ public class Empresa {
 	public String toString() {
 		return "Empresa [id=" + id + ", nomeEmpresa=" + nomeEmpresa + ", cnpjEmpresa=" + cnpjEmpresa + ", telefone="
 				+ telefone + ", endereco=" + endereco + ", dataFundacao=" + dataFundacao + ", proprietario="
-				+ proprietario + "]";
+				+ proprietario.getNome() + "]";
 	}
 
 }

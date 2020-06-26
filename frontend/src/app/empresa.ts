@@ -1,4 +1,7 @@
-export class Empresa {
+import { Empregado } from './empregado';
+import { EmpregadoDetailsComponent } from './empregado-details/empregado-details.component';
+
+export class Empresa{
 
   id: number;
   nomeEmpresa: string;
@@ -6,7 +9,7 @@ export class Empresa {
   telefone: string;
   endereco: string;
   dataFundacao: Date;
-  proprietario:String;
+  proprietario: EmpregadoDetailsComponent;
   active: boolean;
 
 }

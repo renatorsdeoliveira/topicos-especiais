@@ -1,3 +1,10 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js">
+<script>
+  $(document).ready(function(){
+  $('#telefone').mask('(00)00000-0000');
+  $('#phone-number').mask('0000-0000');
+})
+</script>
 <h3>Criar Empresa</h3>
 <div [hidden]="submitted">
   <form (ngSubmit)="onSubmit()">
@@ -19,7 +26,7 @@
       <div class="form-group col-2">
         <label for="telefone">Telefone</label>
         <input type="text" class="form-control form-control-sm" id="telefone" required [(ngModel)]="empresa.telefone"
-          name="telefone">
+        name="telefone">
       </div>
 
       <div class="form-group col-6">
@@ -31,13 +38,14 @@
       <div class="form-group col-2">
         <label for="dataFundacao">Data Fundação</label>
         <input type="date" class="form-control form-control-sm" id="dataFundacao" required [(ngModel)]="empresa.dataFundacao"
-          name="dataFundacao">
+        name="dataFundacao">
       </div>
 
       <div class="form-group col-2">
         <label for="proprietario">Proprietário</label>
-          <select class="form-control form-control-sm" id="proprietario" name="proprietario">
-            <option value="15">DJDJDJDJDJD</option>
+          <select class="form-control form-control-sm" id="proprietario" required [(ngModel)]="empresa.proprietario.empregado.id"
+          name="proprietario">
+            <option value="">655</option>
           </select>
       </div>
 
